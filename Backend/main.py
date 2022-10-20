@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 from database import models
 from database.connection import engine
-import routers.signup
+import routers.signup, routers.login
 from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
@@ -19,3 +19,4 @@ app.add_middleware(
 )
 
 app.include_router(routers.signup.router)
+app.include_router(routers.login.router)
