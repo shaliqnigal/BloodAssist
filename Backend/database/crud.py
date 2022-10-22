@@ -17,4 +17,6 @@ class userCRUD(): # crud operation for signup path operation
         return session.query(models.User).filter(models.User.email == email).first()
     
 
-
+class loginCRUD():
+    def user_login(login:schemas.UserLogin, session: Session =Depends(dataBase)):
+        return session.query(models.User).filter(models.User.email == login.email).first()
