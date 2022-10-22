@@ -37,7 +37,7 @@ def test_login(): # testing for logining user
     )
     assert response.status_code == 200
 
-def test_login_with_invalidDetails(): # testing for logining user
+def test_login_with_invalidDetails(): # testing for logining user with invalid details
     response = client.post(
         "/login", json={"email": "test@gmail.com", "password": "test"}
     )
