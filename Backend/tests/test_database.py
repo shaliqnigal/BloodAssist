@@ -6,7 +6,7 @@ from database.connection import Base
 from database.dependency import dataBase
 from main import app
 
-SQLALCHEMY_DATABASE_URL = f'postgresql://postgres:1234@localhost:5432/testdb' # test database
+SQLALCHEMY_DATABASE_URL = f'postgresql://knfitgdbmlmokz:632279cd2668238116ab5e41e1a41df15ce501ad2720509dfa7ad938d4787d6b@ec2-52-70-45-163.compute-1.amazonaws.com:5432/dcd3avr1gal4hu' # test database
 testengine = create_engine(SQLALCHEMY_DATABASE_URL)
 TestingSessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=testengine)
 Base.metadata.drop_all(bind=testengine)
