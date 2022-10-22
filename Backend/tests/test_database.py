@@ -30,3 +30,15 @@ def test_to_create_existinguser(): # testing existing user
         "/signup", json={"firstname":"testfirstname", "lastname":"testlatname", "email": "test@gmail.com", "password": "test"}
     )
     assert response.status_code == 409
+
+def test_login(): # testing for logining user
+    response = client.post(
+        "/login", json={"email": "test@gmail.com", "password": "test1"}
+    )
+    assert response.status_code == 200
+
+def test_login_with_invalidDetails(): # testing for logining user
+    response = client.post(
+        "/login", json={"email": "test@gmail.com", "password": "test"}
+    )
+    assert response.status_code == 403
