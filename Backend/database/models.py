@@ -1,17 +1,17 @@
-from sqlalchemy import Column, Integer, String
+from sqlalchemy import Column, Integer, String, Boolean, ForeignKey
 from database.connection import Base
 from sqlalchemy.sql.sqltypes import TIMESTAMP
 from sqlalchemy.sql.expression import text
+from sqlalchemy.orm import relationship
 
 class User(Base):
-    __tablename__ = 'userprofile'
+    _tablename_ = 'userprofile'
     id = Column(Integer, primary_key=True, nullable=False)
     email = Column(String,nullable= False, unique= True)
     password = Column(String,nullable= False)
     firstname = Column(String,nullable= False)
     lastname = Column(String,nullable= False)
     created_at = Column(TIMESTAMP(timezone=True),nullable=False, server_default=text('now()'))
-
 
 class Donor(Base):
     _tablename_ = 'donors'
@@ -24,4 +24,4 @@ class Donor(Base):
     created_at = Column(TIMESTAMP(timezone=True),nullable=False, server_default=text('now()'))
     owner_id = Column(Integer, ForeignKey(
         "userprofile.id", ondelete="CASCADE"), nullable=False)
-    owner = relationship("User"
+    owner = relationship("User")
