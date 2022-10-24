@@ -18,3 +18,10 @@ class Token(BaseModel):
 class TokenData(BaseModel):
     id : Optional[str] = None
     email : Optional[EmailStr] = None
+
+class Donor(BaseModel):
+    firstname : str
+    lastname : str
+    email : EmailStr
+    bloodgroup : str
+    contactnumber: int
