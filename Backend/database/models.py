@@ -5,7 +5,7 @@ from sqlalchemy.sql.expression import text
 from sqlalchemy.orm import relationship
 
 class User(Base):
-    _tablename_ = 'userprofile'
+    __tablename__ = 'userprofile'
     id = Column(Integer, primary_key=True, nullable=False)
     email = Column(String,nullable= False, unique= True)
     password = Column(String,nullable= False)
@@ -14,7 +14,7 @@ class User(Base):
     created_at = Column(TIMESTAMP(timezone=True),nullable=False, server_default=text('now()'))
 
 class Donor(Base):
-    _tablename_ = 'donors'
+    __tablename__ = 'donors'
     id = Column(Integer, primary_key=True, nullable=False)
     firstname = Column(String,nullable= False)
     lastname = Column(String,nullable= False)
