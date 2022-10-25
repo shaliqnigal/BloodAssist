@@ -1,0 +1,22 @@
+{  
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "Forntend",
+  "scripts": {
+    "test": "jest"
+
+  },
+
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jest": "^29.2.1",
+    "jest-environment-jsdom": "^29.2.1",
+    "@babel/core": "^7.19.6",
+    "@babel/preset-env": "^7.19.4"
+  },
+  
+  "jest":{
+    "testEnvironment": "jsdom"
+  }
+}

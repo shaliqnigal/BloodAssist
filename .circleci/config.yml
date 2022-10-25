@@ -1,0 +1,41 @@
+version: 2.1
+orbs:
+  python: circleci/python@2.0.3
+  node : circleci/node@5.0.2
+jobs:
+  Tests_for_backend:
+    docker:
+      - image: cimg/python:3.9.6
+    steps:
+      - checkout
+      - run:
+          name: install virtualenv
+          command: pip install virtualenv
+      - run:
+          name : setup virtualenv
+          command: virtualenv .venv
+      - run:
+          name: sourcing virtualenv
+          command: source .venv/bin/activate
+
+      - python/install-packages:
+          pkg-manager: pip
+
+      - run:
+          name: Run tests for Backend
+          command: pytest
+
+  Tests_for_frontend:
+    executor: node/default
+    steps:
+      - checkout
+      - node/install-packages:
+          pkg-manager: npm 
+      - run:
+          name: Run tests for Frontend
+          command: npm test
+workflows:
+  test:
+    jobs:
+      - Tests_for_backend
+      - Tests_for_frontend
