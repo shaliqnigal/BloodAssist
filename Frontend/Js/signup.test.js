@@ -33,3 +33,10 @@ test("onsubmit validation", () => {
   const event = { preventDefault: () => {} }; // onsubmit has two parameters with event and sigupdata
   fs.onSubmit(event, document.getElementById("userDetails"));
 });
+
+//testcase if the response is 409
+test("check if the status is 409", async () => {
+  MOCK_RESPONSE.status = 409;
+  const res = MOCK_RESPONSE;
+  fs.checkStatus(res);
+});
