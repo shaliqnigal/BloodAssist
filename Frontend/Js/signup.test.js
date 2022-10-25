@@ -22,3 +22,14 @@ global.fetch = jest.fn(() =>
     json: () => Promise.resolve(),
   })
 );
+
+// testcase for signuplistner this passes only when it can getlementbyid "userdetails"
+test("signup validation if there is signUpdata", () => {
+  fs.signUpListner();
+});
+
+//testcase for onsubmit
+test("onsubmit validation", () => {
+  const event = { preventDefault: () => {} }; // onsubmit has two parameters with event and sigupdata
+  fs.onSubmit(event, document.getElementById("userDetails"));
+});
