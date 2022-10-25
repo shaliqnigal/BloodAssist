@@ -4,31 +4,61 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="/Frontend/styles.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <title>BloodAssit</title>
+    <title>BloodAssist</title>
 </head>
 <body>
 
   <header>
     <nav class="nav1">
         <div>
-            <p>
-                Contact: Lindell Road, Saint louis, Missouri, 63108 Phone :+1 3187654325
-            </p>
+            <h1>
+              BloodAssist
+            </h1>
+                
+            
         </div>
         <div>
             <i class="fa fa-facebook"></i>
             <i class="fa fa-google"></i>
             <i class="fa fa-twitter"></i>
-            <a href="#" class="btn btn-primary">Signin</a>
+            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#signInModal">
+              SignIn
+            </button>
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
               Signup
             </button>
             </div>
     </nav>
+    <div class="modal fade" id="signInModal" tabindex="-1" aria-labelledby="signInModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="signInModalLabel">SignIn</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form id="login">
+            <div>
+              <label for="email" class="form-label">Email</label>
+            <input id="e" name="email" class="form-control" value="">
+            </div>
+            <div>
+              <label for="password" class="form-label">Password</label>
+            <input id="p" type="password" name="password" class="form-control" value="">
+            </div>
+            <br>
+            <input id="signSubmit" type="submit" class="btn btn-primary" data-bs-dismiss="modal" value="SignIn" data-bs-toggle="modal" data-bs-target="#home">
+            
+            <script type= "module" src="/Frontend/Js/login.js"></script>
+          </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
     
-  
     <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -56,7 +86,7 @@
               </div>
               <br>
               <input id="postSubmit" type="submit" class="btn btn-primary" data-bs-dismiss="modal" value="Create Account" data-bs-toggle="modal" data-bs-target="#popup"  >
-              <script src="signup.js"></script>
+              <script type= "module" src="/Frontend/Js/signup.js"></script>
           </form>
           
           </div>
@@ -64,6 +94,7 @@
         </div>
       </div>
     </div>
+
     <div class="modal fade" id="popup" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="popupLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
@@ -79,6 +110,21 @@
       </div>
     </div>
 
+    <div class="modal fade" id="home" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="popupLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="popupLabel">User Status </h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body" id ="loginresult">
+          
+          </div>
+          
+        </div>
+      </div>
+    </div>
+
     <nav class="nav2">
 
 
@@ -86,7 +132,6 @@
             <a href="#">Home</a>
             <a href="#">About</a>
             <a href="#">contact</a>
-
             <a href="/Frontend/Templates/feedback.html">Send us a feedback!</a>
             <a href="/Frontend/Templates/FAQ.html"> FAQ's</a>
         </div>
@@ -100,6 +145,4 @@
   
 </body>
 </html>
-
-
 
