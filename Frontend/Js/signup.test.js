@@ -40,3 +40,15 @@ test("check if the status is 409", async () => {
   const res = MOCK_RESPONSE;
   fs.checkStatus(res);
 });
+
+test("check if the status is 200", async () => {
+  MOCK_RESPONSE.status = 200;
+  const res = MOCK_RESPONSE;
+  fs.checkStatus(res);
+});
+
+test("check if the status is 422", async () => {
+  MOCK_RESPONSE.status = 422;
+  const res = MOCK_RESPONSE;
+  fs.checkStatus(res);
+});
