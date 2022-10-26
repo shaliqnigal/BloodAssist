@@ -42,3 +42,11 @@ def test_login_with_invalidDetails(): # testing for logining user with invalid d
         "/login", json={"email": "test@gmail.com", "password": "test"}
     )
     assert response.status_code == 403
+    
+    def test_register_donor():
+        response = client.post(
+            "/register_donor",
+            headers={"Authorization":"faketoken"},
+            json={"firstname":"testfirstname", "lastname":"testlatname", "email": "test@gmail.com","bloodgroup":"O","contactnumber":"3146575422"}
+        )
+        assert response.status_code == 401
