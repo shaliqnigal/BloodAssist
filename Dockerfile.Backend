@@ -1,0 +1,17 @@
+# using python 3.9 base image
+FROM python:3.9
+
+# setting the workdir to be /api
+WORKDIR /api
+
+# copying the requirements to workdir
+COPY requirements.txt /api/requirements.txt
+
+# installing dependencies with pip
+RUN pip install -r /api/requirements.txt
+
+#copying the backend folder to workdir
+COPY ./Backend /api
+
+# runnig the app
+CMD ["uvicorn", "--host", "0.0.0.0", "--port", "8000", "main:app"]
