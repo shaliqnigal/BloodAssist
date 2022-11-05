@@ -20,8 +20,11 @@ class Donor(Base):
     lastname = Column(String,nullable= False)
     email = Column(String,nullable= False, unique= True)
     bloodgroup = Column(String,nullable= False)
-    contactnumber = Column(Integer,nullable= False)
+    city = Column(String,nullable = False)
+    state = Column(String,nullable = False)
+    contact_number = Column(String,nullable = False)
     created_at = Column(TIMESTAMP(timezone=True),nullable=False, server_default=text('now()'))
+    
     owner_id = Column(Integer, ForeignKey(
-        "userprofile.id", ondelete="CASCADE"), nullable=False)
+        "userprofile.id", ondelete="CASCADE"), nullable=False,unique= True)
     owner = relationship("User")
