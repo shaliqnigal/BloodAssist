@@ -1,8 +1,9 @@
 export const cookie = document.cookie;
 const registerData = document.getElementById("registerDetails");
+const regusterid = document.getElementById("register");
 export const registerListner = function () {
   if (registerData) {
-    registerData.addEventListener("click", (e) =>
+    regusterid.addEventListener("click", (e) =>
       onSubmitRegister(e, registerData)
     );
   }

@@ -24,4 +24,6 @@ class Donor(BaseModel):
     lastname : str
     email : EmailStr
     bloodgroup : str
-    contactnumber: int
+    city :str
+    state:str
+    contact_number : str
