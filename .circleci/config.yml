@@ -37,5 +37,13 @@ jobs:
 workflows:
   test:
     jobs:
-      - Tests_for_backend
-      - Tests_for_frontend
+      - Tests_for_backend:
+          filters:
+            branches:
+              only:
+                - master
+      - Tests_for_frontend:
+          filters:
+            branches:
+              only:
+                - master
