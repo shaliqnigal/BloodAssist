@@ -31,14 +31,24 @@ export function cards(detailsData) {
       carddetail += `<p class="card-text">City:${detail.city}</p>`;
       carddetail += `<p class="card-text">Contact Number:${detail.contact_number}</p>`;
       carddetail += `</div>`;
-
+      carddetail += `<div class = "card-footer" >`;
+      carddetail += `<small class="text-muted">Last updated ${toDate(
+        detail.created_at
+      )}</small>`;
       carddetail += `</div>`;
-
+      carddetail += `</div>`;
       carddetail += `</div>`;
     });
   document.getElementById("data").innerHTML = carddetail;
 }
 
+export const toDate = function (timestamp) {
+  let date = new Date(timestamp);
+  let formattedDate = `${
+    date.getMonth() + 1
+  }/${date.getDate()}/${date.getFullYear()}`;
+  return formattedDate;
+};
 export const renderCard = async function (page = 1) {
   await getData();
   cards(detailsData);
