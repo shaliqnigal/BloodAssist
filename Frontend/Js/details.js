@@ -49,9 +49,36 @@ export const toDate = function (timestamp) {
   }/${date.getDate()}/${date.getFullYear()}`;
   return formattedDate;
 };
+
 export const renderCard = async function (page = 1) {
   await getData();
   cards(detailsData);
 };
+
+export function previousPage() {
+  if (currentpage > 1) {
+    currentpage--;
+    renderCard(currentpage);
+  }
+}
+
+export function nextPage() {
+  if (currentpage * pagelimit < detailsData.length) {
+    currentpage++;
+    renderCard(currentpage);
+  }
+}
+
+export function numPages() {
+  return Math.ceil(detailsData.length / pagelimit);
+}
+
+const nextb = document.querySelector("#nextb");
+
+nextb?.addEventListener("click", nextPage, false);
+
+const previous = document.querySelector("#previous");
+
+previous?.addEventListener("click", previousPage, false);
 
 renderCard();
