@@ -1,9 +1,9 @@
 export const cookie = document.cookie;
 const registerData = document.getElementById("registerDetails");
-const regusterid = document.getElementById("register");
+const registerid = document.getElementById("register");
 export const registerListner = function () {
   if (registerData) {
-    regusterid.addEventListener("click", (e) =>
+    registerid.addEventListener("click", (e) =>
       onSubmitRegister(e, registerData)
     );
   }
@@ -23,13 +23,19 @@ export const onSubmitRegister = async function (e, registerData) {
   });
   checkStatus(res);
 };
+
 export const checkStatus = async (res) => {
   const out = document.getElementById("registerresult");
   //   const result = await res.json();
-  if (res.status == 200) {
-    out.innerHTML = "Thank you for registering";
-  } else {
+  if (res.status == 422) {
     out.innerHTML = "please enter valid details";
+  } else if (res.status == 409) {
+    out.innerHTML = "You are already registered";
+  } else if (res.status == 403) {
+    out.innerHTML = "Use same email you are logged in with";
+  } else {
+    out.innerHTML = "Thank you for registering";
+    window.location.reload();
   }
 };
 
