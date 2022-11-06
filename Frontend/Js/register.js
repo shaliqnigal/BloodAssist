@@ -33,6 +33,8 @@ export const checkStatus = async (res) => {
     out.innerHTML = "You are already registered";
   } else if (res.status == 403) {
     out.innerHTML = "Use same email you are logged in with";
+  } else if (res.status == 400) {
+    out.innerHTML = "Enter all details";
   } else {
     out.innerHTML = "Thank you for registering";
     window.location.reload();

@@ -6,6 +6,9 @@ from database.dependency import dataBase
 router = APIRouter()
 @router.post('/register_donor')
 async def create_donor(donor:schemas.Donor,session: Session = Depends(dataBase), current_user :  int  = Depends(oauth.get_current_user), current_user_email= Depends(oauth.get_current_user_email) ):
+    if donor.firstname or donor.lastname or donor.city or donor.bloodgroup or donor.contact_number or donor.email or donor.state:
+        raise HTTPException(status_code = 400, detail = f"enter all details")
+
     search_id = session.query(models.Donor).filter(models.Donor.owner_id == current_user ).first()
     
     if current_user_email != donor.email:
