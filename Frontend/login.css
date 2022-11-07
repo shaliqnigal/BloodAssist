@@ -68,3 +68,15 @@ body{
 .faqs{
    padding: 0px 20px 20px;
 }
+
+.card{
+    margin: 0.5rem;
+    border-radius: 2rem;
+    box-shadow: 10px 10px 5px rgb(203, 203, 203);
+    
+}
+.card:hover{
+    transform: scale(1.05);
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  z-index: 10;
+}
