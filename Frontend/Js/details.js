@@ -52,6 +52,18 @@ export const toDate = function (timestamp) {
 
 export const renderCard = async function (page = 1) {
   await getData();
+  if (page == 1) {
+    previous.style.visibility = "hidden";
+  } else {
+    previous.style.visibility = "visible";
+  }
+
+  if (page == numPages()) {
+    nextb.style.visibility = "hidden";
+  } else {
+    nextb.style.visibility = "visible";
+  }
+
   cards(detailsData);
 };
 
