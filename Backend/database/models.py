@@ -28,3 +28,11 @@ class Donor(Base):
     owner_id = Column(Integer, ForeignKey(
         "userprofile.id", ondelete="CASCADE"), nullable=False,unique= True)
     owner = relationship("User")
+
+class Feedback(Base):
+    __tablename__ ='feedback'
+    id = Column(Integer, primary_key=True, nullable=False)
+    rating = Column(String,nullable= False)
+    comments = Column(String,nullable= False)
+    name = Column(String, nullable= False)
+    email = Column(String,nullable = False)
