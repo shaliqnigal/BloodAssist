@@ -3,7 +3,7 @@ from database import models
 from database.connection import engine
 import routers.signup
 import routers.donor
-import routers.signup, routers.login
+import routers.signup, routers.login , routers.feedback
 import routers.details
 from fastapi.middleware.cors import CORSMiddleware
 
@@ -25,4 +25,5 @@ app.include_router(routers.signup.router)
 app.include_router(routers.donor.router)
 app.include_router(routers.login.router)
 app.include_router(routers.details.router)
+app.include_router(routers.feedback.router)
 
