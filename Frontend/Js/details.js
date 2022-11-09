@@ -114,13 +114,24 @@ function filterstatefn(st) {
   cards();
 }
 
+function filterstateandgrp(st, grp) {
+  detailsData = details;
+  detailsData?.sort((a, b) => b.created_at.localeCompare(a.created_at));
+  const filterdata = detailsData.filter(
+    (det) => det.state == st && det.bloodgroup == grp
+  );
+  detailsData = filterdata;
+  console.log(detailsData);
+  cards();
+}
 
 applyId?.addEventListener("click", (e) => {
   e.preventDefault();
-  if (filterblood.value) {
+  if (filterstate.value && filterblood.value) {
+    filterstateandgrp(filterstate.value, filterblood.value);
+  } else if (filterblood.value) {
     filterbloodgroup(filterblood.value);
-  }
-  else if(filterstate.value){
-    filterstatefn(filterstate.value);
+  } else {
+    filterstate(filterstate.value);
   }
 });
