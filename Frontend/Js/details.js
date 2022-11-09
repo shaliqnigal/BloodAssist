@@ -106,9 +106,21 @@ function filterbloodgroup(grp) {
   cards();
 }
 
+function filterstatefn(st) {
+  detailsData = details;
+  detailsData?.sort((a, b) => b.created_at.localeCompare(a.created_at));
+  const filterdata = detailsData.filter((det) => det.state ==st );
+  detailsData = filterdata;
+  cards();
+}
+
+
 applyId?.addEventListener("click", (e) => {
   e.preventDefault();
   if (filterblood.value) {
     filterbloodgroup(filterblood.value);
+  }
+  else if(filterstate.value){
+    filterstatefn(filterstate.value);
   }
 });
