@@ -2,6 +2,9 @@ const pagelimit = 6;
 let currentpage = 1;
 let detailsData = [];
 let details = [];
+const applyId = document.getElementById("applyId");
+const filterblood = document.getElementById("filterValue");
+const filterstate = document.getElementById("filterstate");
 
 export async function getData() {
   try {
@@ -94,3 +97,18 @@ const previous = document.querySelector("#previous");
 previous?.addEventListener("click", previousPage, false);
 
 renderCard();
+
+function filterbloodgroup(grp) {
+  detailsData = details;
+  detailsData?.sort((a, b) => b.created_at.localeCompare(a.created_at));
+  const filterdata = detailsData.filter((det) => det.bloodgroup == grp);
+  detailsData = filterdata;
+  cards();
+}
+
+applyId?.addEventListener("click", (e) => {
+  e.preventDefault();
+  if (filterblood.value) {
+    filterbloodgroup(filterblood.value);
+  }
+});
