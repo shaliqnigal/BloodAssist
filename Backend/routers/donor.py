@@ -31,6 +31,8 @@ async def edit_donor(id:int,update_donor:schemas.Donor,session: Session = Depend
     donor = query.first()
     if donor == None:
         raise HTTPException(status_code = 404, detail = f"You are not yet registered")
+    if current_user_email != update_donor.email:
+        raise HTTPException(status_code = 400, detail = f"Use same email you are logged in with")
     if (donor.owner_id) != int(current_user):
         raise HTTPException(status_code= 403,detail=f"Not authorized to perform requested action")
     query.update(update_donor.dict(), synchronize_session=False)
