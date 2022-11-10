@@ -37,4 +37,4 @@ async def edit_donor(id:int,update_donor:schemas.Donor,session: Session = Depend
         raise HTTPException(status_code= 403,detail=f"Not authorized to perform requested action")
     query.update(update_donor.dict(), synchronize_session=False)
     session.commit()
-    return {"edit operator"}
+    return donor
