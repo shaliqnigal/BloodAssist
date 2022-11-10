@@ -24,3 +24,7 @@ async def create_donor(donor:schemas.Donor,session: Session = Depends(dataBase),
         session.refresh(new_donor)
         
     return new_donor
+
+@router.put("/editdonor/{id}")
+async def edit_donor(id:int,update_donor:schemas.Donor,session: Session = Depends(dataBase), current_user :  int  = Depends(oauth.get_current_user), current_user_email= Depends(oauth.get_current_user_email)):
+    return {"edit operator"}
