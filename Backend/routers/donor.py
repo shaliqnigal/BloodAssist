@@ -27,4 +27,8 @@ async def create_donor(donor:schemas.Donor,session: Session = Depends(dataBase),
 
 @router.put("/editdonor/{id}")
 async def edit_donor(id:int,update_donor:schemas.Donor,session: Session = Depends(dataBase), current_user :  int  = Depends(oauth.get_current_user), current_user_email= Depends(oauth.get_current_user_email)):
+    query = session.query(models.Donor).filter(models.Donor.owner_id == id)
+    donor = query.first()
+    query.update(update_donor.dict(), synchronize_session=False)
+    session.commit()
     return {"edit operator"}
