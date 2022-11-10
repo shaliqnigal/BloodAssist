@@ -27,3 +27,9 @@ class Donor(BaseModel):
     city :str
     state:str
     contact_number : str
+
+class feedback(BaseModel):
+    rating : str
+    comments: str
+    name : str
+    email : EmailStr
