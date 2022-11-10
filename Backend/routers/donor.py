@@ -24,3 +24,17 @@ async def create_donor(donor:schemas.Donor,session: Session = Depends(dataBase),
         session.refresh(new_donor)
         
     return new_donor
+
+@router.put("/editdonor/{id}")
+async def edit_donor(id:int,update_donor:schemas.Donor,session: Session = Depends(dataBase), current_user :  int  = Depends(oauth.get_current_user), current_user_email= Depends(oauth.get_current_user_email)):
+    query = session.query(models.Donor).filter(models.Donor.owner_id == id)
+    donor = query.first()
+    if donor == None:
+        raise HTTPException(status_code = 404, detail = f"You are not yet registered")
+    if current_user_email != update_donor.email:
+        raise HTTPException(status_code = 400, detail = f"Use same email you are logged in with")
+    if (donor.owner_id) != int(current_user):
+        raise HTTPException(status_code= 403,detail=f"Not authorized to perform requested action")
+    query.update(update_donor.dict(), synchronize_session=False)
+    session.commit()
+    return donor
