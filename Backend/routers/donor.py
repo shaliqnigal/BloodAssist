@@ -29,6 +29,8 @@ async def create_donor(donor:schemas.Donor,session: Session = Depends(dataBase),
 async def edit_donor(id:int,update_donor:schemas.Donor,session: Session = Depends(dataBase), current_user :  int  = Depends(oauth.get_current_user), current_user_email= Depends(oauth.get_current_user_email)):
     query = session.query(models.Donor).filter(models.Donor.owner_id == id)
     donor = query.first()
+    if (donor.owner_id) != int(current_user):
+        raise HTTPException(status_code= 403,detail=f"Not authorized to perform requested action")
     query.update(update_donor.dict(), synchronize_session=False)
     session.commit()
     return {"edit operator"}
