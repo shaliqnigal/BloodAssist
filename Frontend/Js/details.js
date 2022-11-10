@@ -15,7 +15,7 @@ export async function getData() {
   } catch (err) {}
 }
 
-export function cards(detailsData) {
+export function cards() {
   var carddetail = "";
   detailsData
     .filter((row, index) => {
@@ -67,7 +67,7 @@ export const renderCard = async function (page = 1) {
     nextb.style.visibility = "visible";
   }
 
-  cards(detailsData);
+  cards();
 };
 
 export function previousPage() {
@@ -121,7 +121,6 @@ function filterstateandgrp(st, grp) {
     (det) => det.state == st && det.bloodgroup == grp
   );
   detailsData = filterdata;
-  console.log(detailsData);
   cards();
 }
 
