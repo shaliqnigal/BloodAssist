@@ -131,6 +131,6 @@ applyId?.addEventListener("click", (e) => {
   } else if (filterblood.value) {
     filterbloodgroup(filterblood.value);
   } else {
-    filterstate(filterstate.value);
+    filterstatefn(filterstate.value);
   }
 });
