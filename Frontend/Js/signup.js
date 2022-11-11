@@ -25,6 +25,8 @@ export const checkStatus = async (response) => {
     output.innerHTML = result.detail;
   } else if (response.status == 422) {
     output.innerHTML = "Please enter valid email address";
+  } else if (response.status == 400) {
+    output.innerHTML = "Enter all details";
   } else {
     output.innerHTML = result;
   }
