@@ -1,183 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="/Frontend/login.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="/Frontend/login.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
     <title>BloodAssist</title>
-</head>
-<body>
-
-  <header>
-    <nav class="nav1">
+  </head>
+  <body>
+    <header>
+      <nav class="nav1">
         <div>
-            <h1>BloodAssist</h1>
+          <h1>BloodAssist</h1>
         </div>
         <div>
-  
-          <a href="/Frontend/index.html" class="btn btn-primary">
-            Logout
-          </a>
-         
-          </div>
-        
-    </nav>
-
-    
-    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="staticBackdropLabel">User Details</h5>
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body" >
-            <form id="registerDetails">
-              <div>
-                <label for="firstname" class="form-label"> Firtsname</label>
-              <input id="fn" name="firstname" class="form-control" placeholder="Enter your Firstname">
-              </div>
-              <div>
-                <label for="lastname" class="form-label">Lastname</label>
-              <input id="ln" name="lastname" class="form-control" placeholder="Enter your Lastname" value="">
-              </div>
-              <div>
-                <label for="email" class="form-label">Email</label>
-              <input id="eml" name="email" class="form-control" placeholder="Enter your logged in email" value="">
-              </div>
-              <div>
-                <label for="bloodgroup" class="form-label">BloodGroup</label>
-                <br>
-                <select name="bloodgroup" id="bloodgroup">
-                  <option value=""></option>
-                  <option value="A+">A+</option>
-                  <option value="A-">A-</option>
-                  <option value="B+">B+</option>
-                  <option value="B-">B-</option>
-                  <option value="O+">O+</option>
-                  <option value="O-">O-</option>
-                  <option value="AB+">AB+</option>
-                  <option value="AB-">AB-</option>
-                </select>
-              </div>
-              <div>
-                <label for="contact_number" class="form-label">Contact Number</label>
-              <input type="tel" id="contact_number" name="contact_number" class="form-control" placeholder="Enter your contact number" value="">
-              </div>
-              <div>
-                <label for="city" class="form-label">City</label>
-              <input id="city" name="city" placeholder="Enter your city" class="form-control" required>
-              </div>
-              <div>
-                <label for="state" class="form-label">State</label>
-              
-              <br>
-              <select name="state" id="state">
-                <option value=""></option>
-                <option value="Alabama">Alabama</option>
-                <option value="Alaska">Alaska</option>
-                <option value="Arizona">Arizona</option>
-                <option value="Arkansas">Arkansas</option>
-                <option value="California">California</option>
-                <option value="Colorado">Colorado</option>
-                <option value="Connecticut">Connecticut</option>
-                <option value="Delaware">Delaware</option>
-                <option value="Florida">Florida</option>
-                <option value="Georgia">Georgia</option>
-                <option value="Hawaii">Hawaii</option>
-                <option value="Idaho">Idaho</option>
-                <option value="Illinois">Illinois</option>
-                <option value="Indiana">Indiana</option>
-                <option value="Iowa">Iowa</option>
-                <option value="Kansas">Kansas</option>
-                <option value="Kentucky">Kentucky</option>
-                <option value="Louisiana">Louisiana</option>
-                <option value="Maine">Maine</option>
-                <option value="Maryland">Maryland</option>
-                <option value="Massachusetts">Massachusetts</option>
-                <option value="Michigan">Michigan</option>
-                <option value="Minnesota">Minnesota</option>
-                <option value="Mississippi">Mississippi</option>
-                <option value="Missouri">Missouri</option>
-                <option value="Montana">Montana</option>
-                <option value="Nebraska">Nebraska</option>
-                <option value="Nevada">Nevada</option>
-                <option value="New Hampshire">New Hampshire</option>
-                <option value="New Jersey">New Jersey</option>
-                <option value="New Mexico">New Mexico</option>
-                <option value="New York">New York</option>
-                <option value="North Carolina">North Carolina</option>
-                <option value="North Dakota">North Dakota</option>
-                <option value="Ohio">Ohio</option>
-                <option value="Oklahoma">Oklahoma</option>
-                <option value="Oregon">Oregon</option>
-                <option value="Pennsylvania">Pennsylvania</option>
-                <option value="Rhode Island">Rhode Island</option>
-                <option value="South Carolina">South Carolina</option>
-                <option value="South Dakota">South Dakota</option>
-                <option value="Tennessee">Tennessee</option>
-                <option value="Texas">Texas</option>
-                <option value="Utah">Utah</option>
-                <option value="Vermont">Vermont</option>
-                <option value="Virginia">Virginia</option>
-                <option value="Washington">Washington</option>
-                <option value="West Virginia">West Virginia</option>
-                <option value="Wisconsin">Wisconsin</option>
-                <option value="Wyoming">Wyoming</option>
-              </select>
-            </div>
-              
-              <br>
-              <input id="register" type="submit" class="btn btn-primary" data-bs-dismiss="modal" value="Register as Donor" data-bs-toggle="modal" data-bs-target="#out"  >
-              <script type="module" src="/Frontend/Js/register.js"></script>
-          </form>
-          
-          </div>
-          
+          <a href="/Frontend/index.html" class="btn btn-primary"> Logout </a>
         </div>
-      </div>
-    </div>
-    <div class="modal fade" id="out" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="popupLabel" aria-hidden="true">
+      </nav>
+
+      <div
+        class="modal fade"
+        id="staticBackdrop"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="popupLabel">User Status </h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <h5 class="modal-title" id="staticBackdropLabel">User Details</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
             </div>
-            <div class="modal-body" id ="registerresult">
-            
+            <div class="modal-body">
+              <form id="registerDetails">
+                <div>
+                  <label for="firstname" class="form-label"> Firtsname</label>
+                  <input
+                    id="fn"
+                    name="firstname"
+                    class="form-control"
+                    placeholder="Enter your Firstname"
+                  />
+                </div>
+                <div>
+                  <label for="lastname" class="form-label">Lastname</label>
+                  <input
+                    id="ln"
+                    name="lastname"
+                    class="form-control"
+                    placeholder="Enter your Lastname"
+                    value=""
+                  />
+                </div>
+                <div>
+                  <label for="email" class="form-label">Email</label>
+                  <input
+                    id="eml"
+                    name="email"
+                    class="form-control"
+                    placeholder="Enter your logged in email"
+                    value=""
+                  />
+                </div>
+                <div>
+                  <label for="bloodgroup" class="form-label">BloodGroup</label>
+                  <br />
+                  <select name="bloodgroup" id="bloodgroup">
+                    <option value=""></option>
+                    <option value="A+">A+</option>
+                    <option value="A-">A-</option>
+                    <option value="B+">B+</option>
+                    <option value="B-">B-</option>
+                    <option value="O+">O+</option>
+                    <option value="O-">O-</option>
+                    <option value="AB+">AB+</option>
+                    <option value="AB-">AB-</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="contact_number" class="form-label"
+                    >Contact Number</label
+                  >
+                  <input
+                    type="tel"
+                    id="contact_number"
+                    name="contact_number"
+                    class="form-control"
+                    placeholder="Enter your contact number"
+                    value=""
+                  />
+                </div>
+                <div>
+                  <label for="city" class="form-label">City</label>
+                  <input
+                    id="city"
+                    name="city"
+                    placeholder="Enter your city"
+                    class="form-control"
+                    required
+                  />
+                </div>
+                <div>
+                  <label for="state" class="form-label">State</label>
+
+                  <br />
+                  <select name="state" id="state">
+                    <option value=""></option>
+                    <option value="Alabama">Alabama</option>
+                    <option value="Alaska">Alaska</option>
+                    <option value="Arizona">Arizona</option>
+                    <option value="Arkansas">Arkansas</option>
+                    <option value="California">California</option>
+                    <option value="Colorado">Colorado</option>
+                    <option value="Connecticut">Connecticut</option>
+                    <option value="Delaware">Delaware</option>
+                    <option value="Florida">Florida</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="Hawaii">Hawaii</option>
+                    <option value="Idaho">Idaho</option>
+                    <option value="Illinois">Illinois</option>
+                    <option value="Indiana">Indiana</option>
+                    <option value="Iowa">Iowa</option>
+                    <option value="Kansas">Kansas</option>
+                    <option value="Kentucky">Kentucky</option>
+                    <option value="Louisiana">Louisiana</option>
+                    <option value="Maine">Maine</option>
+                    <option value="Maryland">Maryland</option>
+                    <option value="Massachusetts">Massachusetts</option>
+                    <option value="Michigan">Michigan</option>
+                    <option value="Minnesota">Minnesota</option>
+                    <option value="Mississippi">Mississippi</option>
+                    <option value="Missouri">Missouri</option>
+                    <option value="Montana">Montana</option>
+                    <option value="Nebraska">Nebraska</option>
+                    <option value="Nevada">Nevada</option>
+                    <option value="New Hampshire">New Hampshire</option>
+                    <option value="New Jersey">New Jersey</option>
+                    <option value="New Mexico">New Mexico</option>
+                    <option value="New York">New York</option>
+                    <option value="North Carolina">North Carolina</option>
+                    <option value="North Dakota">North Dakota</option>
+                    <option value="Ohio">Ohio</option>
+                    <option value="Oklahoma">Oklahoma</option>
+                    <option value="Oregon">Oregon</option>
+                    <option value="Pennsylvania">Pennsylvania</option>
+                    <option value="Rhode Island">Rhode Island</option>
+                    <option value="South Carolina">South Carolina</option>
+                    <option value="South Dakota">South Dakota</option>
+                    <option value="Tennessee">Tennessee</option>
+                    <option value="Texas">Texas</option>
+                    <option value="Utah">Utah</option>
+                    <option value="Vermont">Vermont</option>
+                    <option value="Virginia">Virginia</option>
+                    <option value="Washington">Washington</option>
+                    <option value="West Virginia">West Virginia</option>
+                    <option value="Wisconsin">Wisconsin</option>
+                    <option value="Wyoming">Wyoming</option>
+                  </select>
+                </div>
+
+                <br />
+                <input
+                  id="register"
+                  type="submit"
+                  class="btn btn-primary"
+                  data-bs-dismiss="modal"
+                  value="Register as Donor"
+                  data-bs-toggle="modal"
+                  data-bs-target="#out"
+                />
+                <script type="module" src="/Frontend/Js/register.js"></script>
+              </form>
             </div>
-            
+          </div>
+        </div>
+      </div>
+      <div
+        class="modal fade"
+        id="out"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="popupLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="popupLabel">User Status</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body" id="registerresult"></div>
           </div>
         </div>
       </div>
 
-      <div class="modal fade" id="editdetails" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div
+        class="modal fade"
+        id="editdetails"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="staticBackdropLabel"
+        aria-hidden="true"
+      >
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
               <h5 class="modal-title" id="staticBackdropLabel">Edit Details</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
             </div>
-            <div class="modal-body" >
+            <div class="modal-body">
               <form id="editform">
                 <div>
                   <label for="firstname" class="form-label"> Firtsname</label>
-                <input id="fn" name="firstname" placeholder="Enter your Firstname" class="form-control" required>
+                  <input
+                    id="fn"
+                    name="firstname"
+                    placeholder="Enter your Firstname"
+                    class="form-control"
+                    required
+                  />
                 </div>
                 <div>
                   <label for="lastname" class="form-label">Lastname</label>
-                <input id="ln" name="lastname" placeholder="Enter your Lastname" class="form-control" required>
+                  <input
+                    id="ln"
+                    name="lastname"
+                    placeholder="Enter your Lastname"
+                    class="form-control"
+                    required
+                  />
                 </div>
                 <div>
                   <label for="email" class="form-label">Email</label>
-                <input id="eml" name="email" placeholder="Enter valid email" class="form-control" required>
+                  <input
+                    id="eml"
+                    name="email"
+                    placeholder="Enter valid email"
+                    class="form-control"
+                    required
+                  />
                 </div>
                 <div>
                   <label for="bloodgroup" class="form-label">BloodGroup</label>
-                  <br>
+                  <br />
                   <select name="bloodgroup" id="bloodgroup">
                     <option value="A+">A+</option>
                     <option value="A-">A-</option>
@@ -191,108 +281,141 @@
                 </div>
                 <div>
                   <label for="contact_number" class="form-label">Contact Number</label>
-                <input id="contactnumber" name="contact_number" placeholder="Enter your contact_number" class="form-control" required>
+                <input id="contact_number" name="contact_number" placeholder="Enter your contact_number" class="form-control" required>
                 </div>
                 <div>
                   <label for="city" class="form-label">City</label>
-                <input id="city" name="city" placeholder="Enter your city" class="form-control" required>
+                  <input
+                    id="city"
+                    name="city"
+                    placeholder="Enter your city"
+                    class="form-control"
+                    required
+                  />
                 </div>
                 <div>
                   <label for="state" class="form-label">State</label>
-                
-                <br>
-                <select name="state" id="state">
-                  <option value="Alabama">Alabama</option>
-                  <option value="Alaska">Alaska</option>
-                  <option value="Arizona">Arizona</option>
-                  <option value="Arkansas">Arkansas</option>
-                  <option value="California">California</option>
-                  <option value="Colorado">Colorado</option>
-                  <option value="Connecticut">Connecticut</option>
-                  <option value="Delaware">Delaware</option>
-                  <option value="Florida">Florida</option>
-                  <option value="Georgia">Georgia</option>
-                  <option value="Hawaii">Hawaii</option>
-                  <option value="Idaho">Idaho</option>
-                  <option value="Illinois">Illinois</option>
-                  <option value="Indiana">Indiana</option>
-                  <option value="Iowa">Iowa</option>
-                  <option value="Kansas">Kansas</option>
-                  <option value="Kentucky">Kentucky[</option>
-                  <option value="Louisiana">Louisiana</option>
-                  <option value="Maine">Maine</option>
-                  <option value="Maryland">Maryland</option>
-                  <option value="Massachusetts">Massachusetts[</option>
-                  <option value="Michigan">Michigan</option>
-                  <option value="Minnesota">Minnesota</option>
-                  <option value="Mississippi">Mississippi</option>
-                  <option value="Missouri">Missouri</option>
-                  <option value="Montana">Montana</option>
-                  <option value="Nebraska">Nebraska</option>
-                  <option value="Nevada">Nevada</option>
-                  <option value="New Hampshire">New Hampshire</option>
-                  <option value="New Jersey">New Jersey</option>
-                  <option value="New Mexico">New Mexico</option>
-                  <option value="New York">New York</option>
-                  <option value="North Carolina">North Carolina</option>
-                  <option value="North Dakota">North Dakota</option>
-                  <option value="Ohio">Ohio</option>
-                  <option value="Oklahoma">Oklahoma</option>
-                  <option value="Oregon">Oregon</option>
-                  <option value="Pennsylvania">Pennsylvania[</option>
-                  <option value="Rhode Island">Rhode Island</option>
-                  <option value="South Carolina">South Carolina</option>
-                  <option value="South Dakota">South Dakota</option>
-                  <option value="Tennessee">Tennessee</option>
-                  <option value="Texas">Texas</option>
-                  <option value="Utah">Utah</option>
-                  <option value="Vermont">Vermont</option>
-                  <option value="Virginia">Virginia</option>
-                  <option value="Washington">Washington</option>
-                  <option value="West Virginia">West Virginia</option>
-                  <option value="Wisconsin">Wisconsin</option>
-                  <option value="Wyoming">Wyoming</option>
-                </select>
-              </div>
-                <br>
-                <input id="edit" type="submit" class="btn btn-primary" data-bs-dismiss="modal" value="Save Changes" data-bs-toggle="modal" data-bs-target="#editout" >
+
+                  <br />
+                  <select name="state" id="state">
+                    <option value="Alabama">Alabama</option>
+                    <option value="Alaska">Alaska</option>
+                    <option value="Arizona">Arizona</option>
+                    <option value="Arkansas">Arkansas</option>
+                    <option value="California">California</option>
+                    <option value="Colorado">Colorado</option>
+                    <option value="Connecticut">Connecticut</option>
+                    <option value="Delaware">Delaware</option>
+                    <option value="Florida">Florida</option>
+                    <option value="Georgia">Georgia</option>
+                    <option value="Hawaii">Hawaii</option>
+                    <option value="Idaho">Idaho</option>
+                    <option value="Illinois">Illinois</option>
+                    <option value="Indiana">Indiana</option>
+                    <option value="Iowa">Iowa</option>
+                    <option value="Kansas">Kansas</option>
+                    <option value="Kentucky">Kentucky[</option>
+                    <option value="Louisiana">Louisiana</option>
+                    <option value="Maine">Maine</option>
+                    <option value="Maryland">Maryland</option>
+                    <option value="Massachusetts">Massachusetts[</option>
+                    <option value="Michigan">Michigan</option>
+                    <option value="Minnesota">Minnesota</option>
+                    <option value="Mississippi">Mississippi</option>
+                    <option value="Missouri">Missouri</option>
+                    <option value="Montana">Montana</option>
+                    <option value="Nebraska">Nebraska</option>
+                    <option value="Nevada">Nevada</option>
+                    <option value="New Hampshire">New Hampshire</option>
+                    <option value="New Jersey">New Jersey</option>
+                    <option value="New Mexico">New Mexico</option>
+                    <option value="New York">New York</option>
+                    <option value="North Carolina">North Carolina</option>
+                    <option value="North Dakota">North Dakota</option>
+                    <option value="Ohio">Ohio</option>
+                    <option value="Oklahoma">Oklahoma</option>
+                    <option value="Oregon">Oregon</option>
+                    <option value="Pennsylvania">Pennsylvania[</option>
+                    <option value="Rhode Island">Rhode Island</option>
+                    <option value="South Carolina">South Carolina</option>
+                    <option value="South Dakota">South Dakota</option>
+                    <option value="Tennessee">Tennessee</option>
+                    <option value="Texas">Texas</option>
+                    <option value="Utah">Utah</option>
+                    <option value="Vermont">Vermont</option>
+                    <option value="Virginia">Virginia</option>
+                    <option value="Washington">Washington</option>
+                    <option value="West Virginia">West Virginia</option>
+                    <option value="Wisconsin">Wisconsin</option>
+                    <option value="Wyoming">Wyoming</option>
+                  </select>
+                </div>
+                <br />
+                <input
+                  id="edit"
+                  type="submit"
+                  class="btn btn-primary"
+                  data-bs-dismiss="modal"
+                  value="Save Changes"
+                  data-bs-toggle="modal"
+                  data-bs-target="#editout"
+                />
                 <script type="module" src="/Frontend/Js/edit.js"></script>
-            </form>
-            
+              </form>
             </div>
-            
-          </div>
-        </div>
-      </div>
-      
-      <div class="modal fade" id="editout" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="popupLabel" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="popupLabel">User Status </h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body" id ="editresult">
-            
-            </div>
-            
           </div>
         </div>
       </div>
 
-      <div class="modal fade" id="filter" tabindex="-1" aria-labelledby="filterLabel" aria-hidden="true">
+      <div
+        class="modal fade"
+        id="editout"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="popupLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="popupLabel">User Status</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body" id="editresult"></div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="modal fade"
+        id="filter"
+        tabindex="-1"
+        aria-labelledby="filterLabel"
+        aria-hidden="true"
+      >
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
               <h1 class="modal-title fs-5" id="signInModalLabel">Filter</h1>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
             </div>
             <div class="modal-body">
               <form id="filterform">
                 <div>
-                 <label for="bloodgroup" class="form-label">BloodGroup</label>
-                  <br>
-                  <select name="bloodgroup" id="filterValue" >
+                  <label for="bloodgroup" class="form-label">BloodGroup</label>
+                  <br />
+                  <select name="bloodgroup" id="filterValue">
                     <option value=""></option>
                     <option value="A+">A+</option>
                     <option value="A-">A-</option>
@@ -306,7 +429,7 @@
                 </div>
                 <div>
                   <label for="state" class="form-label">State</label>
-                  <br>
+                  <br />
                   <select name="state" id="filterstate">
                     <option value=""></option>
                     <option value="Alabama">Alabama</option>
@@ -361,42 +484,136 @@
                     <option value="Wyoming">Wyoming</option>
                   </select>
                 </div>
-              <br>
-              <input id="applyId" type="submit" class="btn btn-primary" data-bs-dismiss="modal" value="Apply" data-bs-toggle="modal"> 
-              <script type="module" src="/Frontend/Js/details.js"></script>
-            </form> 
+                <br />
+                <input
+                  id="applyId"
+                  type="submit"
+                  class="btn btn-primary"
+                  data-bs-dismiss="modal"
+                  value="Apply"
+                  data-bs-toggle="modal"
+                />
+                <script type="module" src="/Frontend/Js/details.js"></script>
+              </form>
             </div>
           </div>
         </div>
       </div>
-  
+
+      <div class="modal" id="unregister" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Confirm Unregisteration</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body">
+              <p>Are you sure you want to unregister?</p>
+            </div>
+            <div class="modal-footer">
+              <button
+                id="unregisteryes"
+                type="button"
+                class="btn btn-primary"
+                data-bs-dismiss="modal"
+                data-bs-toggle="modal"
+                data-bs-target="#unregisterout"
+              >
+                yes
+              </button>
+              <button
+                type="button"
+                class="btn btn-secondary"
+                data-bs-dismiss="modal"
+              >
+                No
+              </button>
+              <script type="module" src="/Frontend/Js/unregister.js"></script>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div
+        class="modal fade"
+        id="unregisterout"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
+        tabindex="-1"
+        aria-labelledby="popupLabel"
+        aria-hidden="true"
+      >
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="popupLabel">User Status</h5>
+              <button
+                type="button"
+                class="btn-close"
+                data-bs-dismiss="modal"
+                aria-label="Close"
+              ></button>
+            </div>
+            <div class="modal-body" id="unregisterstatus"></div>
+          </div>
+        </div>
+      </div>
+
       <nav class="nav2">
-  
-  
-              <div>
-                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
-                    Register to donate
-                  </button>
-                </div>
-                 <div> 
-                  <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#editdetails">
-                    Edit donor details
-                  </button>
-                  </div>
-                  <div>
-                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#filter">
-                      Apply Filter
-                    </button>
-                    </div>
-  
-            
+        <div>
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#staticBackdrop"
+          >
+            Register to donate
+          </button>
+        </div>
+        <div>
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#editdetails"
+          >
+            Edit donor details
+          </button>
+        </div>
+        <div>
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#filter"
+          >
+            Apply Filter
+          </button>
+        </div>
+        <div>
+          <button
+            type="button"
+            class="btn btn-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#unregister"
+          >
+            Unregister
+          </button>
+        </div>
       </nav>
-      <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js" integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK" crossorigin="anonymous"></script>
+      <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.min.js"
+        integrity="sha384-ODmDIVzN+pFdexxHEHFBQH3/9/vQ9uori45z4JjnFsRydbmQbmL5t1tQ0culUzyK"
+        crossorigin="anonymous"
+      ></script>
 
       <div class="container mt-5 mb-5">
-        <div class="card-columns row" id = "data" >
-          
-        </div>
+        <div class="card-columns row" id="data"></div>
         <nav>
           <ul class="pagination">
             <li class="page-item">
@@ -408,11 +625,11 @@
           </ul>
         </nav>
       </div>
-      <script src = "https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"></script>
-      <script type= "module" src="/Frontend/Js/details.js"> </script>
-  </header> 
-  
-  
-    
+      <script
+        src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      ></script>
+      <script type="module" src="/Frontend/Js/details.js"></script>
+    </header>
   </body>
-  </html>
+</html>
