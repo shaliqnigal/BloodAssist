@@ -1,6 +1,7 @@
 export const cookie = document.cookie;
 const editData = document.getElementById("editform");
 const editid = document.getElementById("edit");
+const contactNumber = document.getElementById("contactnumber");
 function parseJwt(token) {
   var base64Url = token.split(".")[1];
   var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
@@ -16,11 +17,16 @@ function parseJwt(token) {
 
   return JSON.parse(jsonPayload);
 }
+function validatePhoneNumber(inputtxt) {
+  var phoneno = /^\d{10}$/;
+  return inputtxt.match(phoneno);
+}
 var decode = parseJwt(cookie);
 console.log(decode);
 const owner_id = decode.user_id;
 
 const url = `http://127.0.0.1:8000/editdonor/${owner_id}`;
+
 export const editListner = function () {
   if (editData) {
     editid.addEventListener("click", (e) => onSubmitRegister(e, editData));
@@ -45,7 +51,9 @@ export const onSubmitRegister = async function (e, editData) {
 export const checkStatus = async (res) => {
   const out = document.getElementById("editresult");
   //   const result = await res.json();
-  if (res.status == 422) {
+  if (!validatePhoneNumber(contactNumber.value)) {
+    out.innerHTML = "Enter valid conatct number";
+  } else if (res.status == 422) {
     out.innerHTML = "please enter valid details";
   } else if (res.status == 404) {
     out.innerHTML = "You are not yet registered";
