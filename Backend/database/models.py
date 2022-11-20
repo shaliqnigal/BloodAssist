@@ -22,7 +22,7 @@ class Donor(Base):
     bloodgroup = Column(String,nullable= False)
     city = Column(String,nullable = False)
     state = Column(String,nullable = False)
-    contact_number = Column(String,nullable = False)
+    contact_number = Column(String,nullable = False, unique= True)
     created_at = Column(TIMESTAMP(timezone=True),nullable=False, server_default=text('now()'))
     
     owner_id = Column(Integer, ForeignKey(
