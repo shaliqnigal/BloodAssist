@@ -38,3 +38,16 @@ async def edit_donor(id:int,update_donor:schemas.Donor,session: Session = Depend
     query.update(update_donor.dict(), synchronize_session=False)
     session.commit()
     return donor
+
+@router.delete("/deletedonor/{id}")
+async def delete_donor(id:int,session: Session = Depends(dataBase), current_user :  int  = Depends(oauth.get_current_user), current_user_email= Depends(oauth.get_current_user_email)):
+    query = session.query(models.Donor).filter(models.Donor.owner_id == id)
+    donor = query.first()
+    if donor == None:
+        raise HTTPException(status_code = 404, detail = f"You are not yet registered")
+    if (donor.owner_id) == int(current_user):
+        query.delete(synchronize_session=False)
+        session.commit()
+    else:
+        raise HTTPException(status_code = 403, detail = f"Not authorized to perform requested action")
+    return donor
