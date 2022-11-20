@@ -20,3 +20,10 @@ class userCRUD(): # crud operation for signup path operation
 class loginCRUD():
     def user_login(login:schemas.UserLogin, session: Session =Depends(dataBase)):
         return session.query(models.User).filter(models.User.email == login.email).first()
+
+class feedbackCRUD():
+    def feedbackSave(feedback: schemas.feedback, session: Session = Depends(dataBase)):
+        new_feedback = models.Feedback(**feedback.dict())
+        session.add(new_feedback)
+        session.commit()
+        session.refresh(new_feedback)
