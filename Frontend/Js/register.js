@@ -1,6 +1,12 @@
 export const cookie = document.cookie;
 const registerData = document.getElementById("registerDetails");
 const registerid = document.getElementById("register");
+const cn = document.getElementById("contact_number");
+
+function validatePhoneNumber(inputtxt) {
+  var phoneno = /^\d{10}$/;
+  return inputtxt.match(phoneno);
+}
 export const registerListner = function () {
   if (registerData) {
     registerid.addEventListener("click", (e) =>
@@ -27,7 +33,9 @@ export const onSubmitRegister = async function (e, registerData) {
 export const checkStatus = async (res) => {
   const out = document.getElementById("registerresult");
   //   const result = await res.json();
-  if (res.status == 422) {
+  if (!validatePhoneNumber(cn.value)) {
+    out.innerHTML = "Enter valid Contact number ";
+  } else if (res.status == 422) {
     out.innerHTML = "please enter valid details";
   } else if (res.status == 409) {
     out.innerHTML = "You are already registered";
@@ -37,7 +45,6 @@ export const checkStatus = async (res) => {
     out.innerHTML = "Enter all details";
   } else {
     out.innerHTML = "Thank you for registering";
-    window.location.reload();
   }
 };
 
