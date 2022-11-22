@@ -39,11 +39,6 @@ const fetchUserDetails = async function (e) {
   });
 };
 
-function validatePhoneNumber(inputtxt) {
-  var phoneno = /^\d{10}$/;
-  return inputtxt.match(phoneno);
-}
-
 export const editListner = function () {
   if (editData) {
     editid.addEventListener("click", (e) => onSubmitRegister(e, editData));
@@ -78,9 +73,12 @@ export const checkStatus = async (res) => {
     out.innerHTML = "Use same email you are logged in with";
   } else if (res.status == 403) {
     out.innerHTML = "You are not authorized";
+  } else if (res.status == 500) {
+    out.innerHTML = "Session Expired";
+    window.location.replace("/Frontend/index.html");
   } else {
     out.innerHTML = "Changes are saved";
-    window.location.reload();
+    setTimeout(() => window.location.reload(), 2800);
   }
 };
 

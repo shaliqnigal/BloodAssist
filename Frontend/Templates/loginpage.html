@@ -281,7 +281,7 @@
                 </div>
                 <div>
                   <label for="contact_number" class="form-label">Contact Number</label>
-                <input id="contact_number" name="contact_number" placeholder="Enter your contact_number" class="form-control" required>
+                <input id="contactnumber" name="contact_number" placeholder="Enter your contact_number" class="form-control" required>
                 </div>
                 <div>
                   <label for="city" class="form-label">City</label>
@@ -356,7 +356,7 @@
                   type="submit"
                   class="btn btn-primary"
                   data-bs-dismiss="modal"
-                  value="Save Changes"
+                  value= "Save Changes"
                   data-bs-toggle="modal"
                   data-bs-target="#editout"
                 />
@@ -557,6 +557,7 @@
                 class="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
+                onclick="window.location.reload()"
               ></button>
             </div>
             <div class="modal-body" id="unregisterstatus"></div>
@@ -578,6 +579,7 @@
         <div>
           <button
             type="button"
+            id = "ebtn"
             class="btn btn-primary"
             data-bs-toggle="modal"
             data-bs-target="#editdetails"

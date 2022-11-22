@@ -4,7 +4,7 @@ from sqlalchemy.sql.sqltypes import TIMESTAMP
 from sqlalchemy.sql.expression import text
 from sqlalchemy.orm import relationship
 
-class User(Base):
+class User(Base): # table for user accounts with "userprofile" tablename
     __tablename__ = 'userprofile'
     id = Column(Integer, primary_key=True, nullable=False)
     email = Column(String,nullable= False, unique= True)
@@ -13,7 +13,7 @@ class User(Base):
     lastname = Column(String,nullable= False)
     created_at = Column(TIMESTAMP(timezone=True),nullable=False, server_default=text('now()'))
 
-class Donor(Base):
+class Donor(Base): # table for Donors with "donors" tablename
     __tablename__ = 'donors'
     id = Column(Integer, primary_key=True, nullable=False)
     firstname = Column(String,nullable= False)
@@ -29,7 +29,7 @@ class Donor(Base):
         "userprofile.id", ondelete="CASCADE"), nullable=False,unique= True)
     owner = relationship("User")
 
-class Feedback(Base):
+class Feedback(Base): # table for Feedback with "feedback" tablename
     __tablename__ ='feedback'
     id = Column(Integer, primary_key=True, nullable=False)
     rating = Column(String,nullable= False)

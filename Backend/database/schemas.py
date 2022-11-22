@@ -1,25 +1,25 @@
 from pydantic import BaseModel,EmailStr
 from typing import Optional
 
-class UserCreate(BaseModel):
+class UserCreate(BaseModel): # schema for user creation
     firstname : str
     lastname : str
     email : EmailStr
     password : str
 
-class UserLogin(BaseModel):
+class UserLogin(BaseModel): # schema for user login
     email:EmailStr
     password :str
 
-class Token(BaseModel):
+class Token(BaseModel): # schema for JWT and it is type
     access_token: str
     token_type : str
 
-class TokenData(BaseModel):
+class TokenData(BaseModel): # schema for JWT encoded with
     id : Optional[str] = None
     email : Optional[EmailStr] = None
 
-class Donor(BaseModel):
+class Donor(BaseModel): #schema for Donor
     firstname : str
     lastname : str
     email : EmailStr
@@ -28,7 +28,7 @@ class Donor(BaseModel):
     state:str
     contact_number : str
 
-class feedback(BaseModel):
+class feedback(BaseModel): #schema for feedback
     rating : str
     comments: str
     name : str
