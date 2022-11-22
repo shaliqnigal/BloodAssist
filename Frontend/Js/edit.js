@@ -4,6 +4,7 @@ const editid = document.getElementById("edit");
 const editButton = document.getElementById("ebtn");
 const formElements = Array.from(editData.elements);
 
+const contactNumber = document.getElementById("contactnumber");
 function parseJwt(token) {
   var base64Url = token.split(".")[1];
   var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
@@ -18,6 +19,10 @@ function parseJwt(token) {
   );
 
   return JSON.parse(jsonPayload);
+}
+function validatePhoneNumber(inputtxt) {
+  var phoneno = /^\d{10}$/;
+  return inputtxt.match(phoneno);
 }
 var decode = parseJwt(cookie);
 const owner_id = decode.user_id;
@@ -78,4 +83,5 @@ export const checkStatus = async (res) => {
     window.location.reload();
   }
 };
+
 editListner();
