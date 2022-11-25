@@ -50,3 +50,12 @@ def test_register_donor():
         json={"firstname":"testfirstname", "lastname":"testlatname", "email": "test@gmail.com","bloodgroup":"O","contactnumber":"3146575422"}
     )
     assert response.status_code == 401
+
+
+def test_details():
+    response = client.get("/alldonors")
+    assert response.status_code == 200
+
+def test_eachDonorDetails():
+    response = client.get("/donor/0")
+    assert response.status_code == 200

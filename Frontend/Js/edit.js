@@ -1,6 +1,9 @@
 export const cookie = document.cookie;
 const editData = document.getElementById("editform");
 const editid = document.getElementById("edit");
+const editButton = document.getElementById("ebtn");
+const formElements = Array.from(editData.elements);
+
 const contactNumber = document.getElementById("contactnumber");
 function parseJwt(token) {
   var base64Url = token.split(".")[1];
@@ -22,10 +25,19 @@ function validatePhoneNumber(inputtxt) {
   return inputtxt.match(phoneno);
 }
 var decode = parseJwt(cookie);
-console.log(decode);
 const owner_id = decode.user_id;
 
 const url = `http://127.0.0.1:8000/editdonor/${owner_id}`;
+const eachdonorurl = `http://127.0.0.1:8000/donor/${owner_id}`;
+editButton.addEventListener("click", (e) => fetchUserDetails(e));
+
+const fetchUserDetails = async function (e) {
+  let userDetails = await fetch(eachdonorurl);
+  userDetails = await userDetails.json();
+  formElements.forEach((element) => {
+    element.value = userDetails[element.name];
+  });
+};
 
 export const editListner = function () {
   if (editData) {
@@ -61,9 +73,12 @@ export const checkStatus = async (res) => {
     out.innerHTML = "Use same email you are logged in with";
   } else if (res.status == 403) {
     out.innerHTML = "You are not authorized";
+  } else if (res.status == 500) {
+    out.innerHTML = "Session Expired";
+    window.location.replace("/Frontend/index.html");
   } else {
     out.innerHTML = "Changes are saved";
-    window.location.reload();
+    setTimeout(() => window.location.reload(), 2800);
   }
 };
 
