@@ -27,3 +27,9 @@ class feedbackCRUD(): # feedback drub operation
         session.add(new_feedback)
         session.commit()
         session.refresh(new_feedback)
+
+class detailsCRUD():
+    def getAllDonors(session: Session = Depends(dataBase)):
+        return session.query(models.Donor).all()
+    def inidvualDonor(id :int, session: Session = Depends(dataBase)):
+        return session.query(models.Donor).filter(models.Donor.owner_id == id)
