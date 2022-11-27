@@ -5,7 +5,7 @@ let details = [];
 const applyId = document.getElementById("applyId");
 const filterblood = document.getElementById("filterValue");
 const filterstate = document.getElementById("filterstate");
-
+const filtercity = document.getElementById("cityfilter")
 export async function getData() {
   try {
     const response = await fetch("http://127.0.0.1:8000/alldonors");
@@ -106,6 +106,14 @@ function filterbloodgroup(grp) {
   cards();
 }
 
+function filterByCity(city) {
+  detailsData = details;
+  detailsData?.sort((a, b) => b.created_at.localeCompare(a.created_at));
+  const filterdata = detailsData.filter((det) => det.city == city);
+  detailsData = filterdata;
+  cards();
+}
+
 function filterstatefn(st) {
   detailsData = details;
   detailsData?.sort((a, b) => b.created_at.localeCompare(a.created_at));
@@ -124,12 +132,26 @@ function filterstateandgrp(st, grp) {
   cards();
 }
 
+function filterBldgrpAndCity(city , grp){
+  detailsData = details;
+  detailsData?.sort((a, b) => b.created_at.localeCompare(a.created_at));
+  const filterdata = detailsData.filter(
+    (det) => det.city == city  && det.bloodgroup == grp
+  );
+  detailsData = filterdata;
+  cards();
+}
+
 applyId?.addEventListener("click", (e) => {
   e.preventDefault();
   if (filterstate.value && filterblood.value) {
     filterstateandgrp(filterstate.value, filterblood.value);
+  } else if (filterblood.value && filtercity.value) {
+    filterBldgrpAndCity(filtercity.value, filterblood.value );
   } else if (filterblood.value) {
     filterbloodgroup(filterblood.value);
+  } else if (filtercity.value){
+    filterByCity(filtercity.value);
   } else {
     filterstatefn(filterstate.value);
   }
