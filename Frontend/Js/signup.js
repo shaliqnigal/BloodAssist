@@ -1,3 +1,10 @@
+function SendMail() {
+  var params = {
+    from_name: document.getElementById("firstname").value,
+    email_id: document.getElementById("email").value,
+  };
+  emailjs.send("service_0p65cy8", "template_1g27wlj", params);
+}
 export const signUpListner = function () {
   let signupData = document.getElementById("userDetails");
   if (signupData) {
@@ -29,6 +36,7 @@ export const checkStatus = async (response) => {
     output.innerHTML = "Enter all details";
   } else {
     output.innerHTML = result;
+    SendMail();
   }
 };
 
