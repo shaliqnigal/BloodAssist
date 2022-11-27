@@ -1,7 +1,7 @@
 function SendMail() {
   var params = {
-    from_name: document.getElementById("firstname").value,
-    email_id: document.getElementById("email").value,
+    from_name: document.getElementById("firstname")?.value,
+    email_id: document.getElementById("email")?.value,
   };
   emailjs.send("service_0p65cy8", "template_1g27wlj", params);
 }
