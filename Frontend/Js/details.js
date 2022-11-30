@@ -109,7 +109,7 @@ function filterbloodgroup(grp) {
 function filterstatefn(st) {
   detailsData = details;
   detailsData?.sort((a, b) => b.created_at.localeCompare(a.created_at));
-  const filterdata = detailsData.filter((det) => det.state ==st );
+  const filterdata = detailsData.filter((det) => det.state == st);
   detailsData = filterdata;
   cards();
 }
