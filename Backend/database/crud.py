@@ -1,6 +1,6 @@
 from database import schemas, models
 from sqlalchemy.orm import Session
-from database import hashing
+from database import hashing,oauth
 from database.connection import engine
 from fastapi import Depends
 from database.dependency import dataBase
