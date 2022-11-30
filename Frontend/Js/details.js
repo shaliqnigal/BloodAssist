@@ -142,12 +142,36 @@ function filterBldgrpAndCity(city , grp){
   cards();
 }
 
+function filterStateAndCity(city , state){
+  detailsData = details;
+  detailsData?.sort((a, b) => b.created_at.localeCompare(a.created_at));
+  const filterdata = detailsData.filter(
+    (det) => det.city == city  && det.state == state
+  );
+  detailsData = filterdata;
+  cards();
+}
+
+function filterall(grp, city, state ){
+  detailsData = details;
+  detailsData?.sort((a, b) => b.created_at.localeCompare(a.created_at));
+  const filterdata = detailsData.filter(
+    (det) => det.city == city  && det.state == state && det.bloodgroup == grp
+  );
+  detailsData = filterdata;
+  cards();
+
+}
 applyId?.addEventListener("click", (e) => {
   e.preventDefault();
-  if (filterstate.value && filterblood.value) {
+  if (filterblood.value && filtercity.value && filterblood.valuee && filterblood.value) {
     filterstateandgrp(filterstate.value, filterblood.value);
+  } else if (filterstate.value && filtercity.value){
+    filterStateAndCity(filtercity.value, filterstate.value)
   } else if (filterblood.value && filtercity.value) {
     filterBldgrpAndCity(filtercity.value, filterblood.value );
+  } else if (filterblood.value && filtercity.value && filterstate.value) {
+    filterall(filterblood.value,filtercity.value,filterstate.value)
   } else if (filterblood.value) {
     filterbloodgroup(filterblood.value);
   } else if (filtercity.value){
