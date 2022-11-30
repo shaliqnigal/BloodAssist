@@ -28,13 +28,6 @@ class feedbackCRUD(): # feedback drub operation
         session.commit()
         session.refresh(new_feedback)
 
-<<<<<<< Updated upstream
-class detailsCRUD():
-    def getAllDonors(session: Session = Depends(dataBase)):
-        return session.query(models.Donor).all()
-    def inidvualDonor(id :int, session: Session = Depends(dataBase)):
-        return session.query(models.Donor).filter(models.Donor.owner_id == id)
-=======
 class donorCRUD(): #Dono crud operations
     def findDonorWithid(id:int, session: Session = Depends(dataBase)): # function to find the donor with id
         return session.query(models.Donor).filter(models.Donor.owner_id == id)
@@ -51,4 +44,3 @@ class donorCRUD(): #Dono crud operations
         session.add(new_donor)
         session.commit()
         session.refresh(new_donor)
->>>>>>> Stashed changes

@@ -16,6 +16,12 @@ const MOCK_RESPONSE = {
   },
 };
 
+// mockimg global library
+global.emailjs = {
+  send: (service_id, template_id, user_id) => {
+    return;
+  },
+};
 // mocking the fetch api
 global.fetch = jest.fn(() =>
   Promise.resolve({
