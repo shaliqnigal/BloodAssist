@@ -22,7 +22,8 @@ export const loginListner = function () {
   
     if (response.status == 200) {
       output.innerHTML = "Login Success";
-      window.location.replace("/Frontend/Templates/loginpage.html");
+      // window.location.replace("/Frontend/Templates/loginpage.html");
+      setTimeout(() => window.location.replace("/Frontend/Templates/loginpage.html"), 1300)
       document.cookie = result;
     } else {
       output.innerHTML = "Invalid details";
