@@ -23,7 +23,7 @@
           <a href="/Frontend/index.html" class="btn btn-primary"> Logout </a>
         </div>
       </nav>
-
+      <!-- register as as donor modal -->
       <div
         class="modal fade"
         id="staticBackdrop"
@@ -32,11 +32,11 @@
         tabindex="-1"
         aria-labelledby="staticBackdropLabel"
         aria-hidden="true"
-      >
+      > 
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="staticBackdropLabel">User Details</h5>
+              <h5 class="modal-title" id="staticBackdropLabel">Donor Details</h5>
               <button
                 type="button"
                 class="btn-close"
@@ -47,7 +47,7 @@
             <div class="modal-body">
               <form id="registerDetails">
                 <div>
-                  <label for="firstname" class="form-label"> Firtsname</label>
+                  <label for="firstname" class="form-label"> First Name</label>
                   <input
                     id="fn"
                     name="firstname"
@@ -56,7 +56,7 @@
                   />
                 </div>
                 <div>
-                  <label for="lastname" class="form-label">Lastname</label>
+                  <label for="lastname" class="form-label">Last Name</label>
                   <input
                     id="ln"
                     name="lastname"
@@ -188,6 +188,7 @@
           </div>
         </div>
       </div>
+       <!-- register donor alert modal -->
       <div
         class="modal fade"
         id="out"
@@ -213,6 +214,7 @@
         </div>
       </div>
 
+      <!-- edit donor details modal -->
       <div
         class="modal fade"
         id="editdetails"
@@ -236,7 +238,7 @@
             <div class="modal-body">
               <form id="editform">
                 <div>
-                  <label for="firstname" class="form-label"> Firtsname</label>
+                  <label for="firstname" class="form-label"> First Name</label>
                   <input
                     id="fn"
                     name="firstname"
@@ -246,7 +248,7 @@
                   />
                 </div>
                 <div>
-                  <label for="lastname" class="form-label">Lastname</label>
+                  <label for="lastname" class="form-label">Last Name</label>
                   <input
                     id="ln"
                     name="lastname"
@@ -266,9 +268,10 @@
                   />
                 </div>
                 <div>
-                  <label for="bloodgroup" class="form-label">BloodGroup</label>
+                  <label for="bloodgroup" class="form-label">Blood Group</label>
                   <br />
-                  <select name="bloodgroup" id="bloodgroup">
+                  <select name="bloodgroup" id="bloodgroup" >
+                    <option value=""></option>
                     <option value="A+">A+</option>
                     <option value="A-">A-</option>
                     <option value="B+">B+</option>
@@ -298,6 +301,7 @@
 
                   <br />
                   <select name="state" id="state">
+                    <option value=""></option>
                     <option value="Alabama">Alabama</option>
                     <option value="Alaska">Alaska</option>
                     <option value="Arizona">Arizona</option>
@@ -367,6 +371,7 @@
         </div>
       </div>
 
+      <!-- edit donor alert modal -->
       <div
         class="modal fade"
         id="editout"
@@ -392,6 +397,7 @@
         </div>
       </div>
 
+      <!-- filter donors modal -->
       <div
         class="modal fade"
         id="filter"
@@ -484,6 +490,15 @@
                     <option value="Wyoming">Wyoming</option>
                   </select>
                 </div>
+                <div>
+                  <label for="cityfilter" class="form-label">City</label>
+                  <input
+                    id="cityfilter"
+                    name="cityfilter"
+                    placeholder="Enter city to filter"
+                    class="form-control"
+                  />
+                </div>
                 <br />
                 <input
                   id="applyId"
@@ -500,6 +515,7 @@
         </div>
       </div>
 
+      <!-- unregister modal -->
       <div class="modal" id="unregister" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -539,6 +555,7 @@
         </div>
       </div>
 
+      <!-- unregister alert modal -->
       <div
         class="modal fade"
         id="unregisterout"
@@ -565,6 +582,7 @@
         </div>
       </div>
 
+      <!-- all buttons on the page -->
       <nav class="nav2">
         <div>
           <button
@@ -614,6 +632,7 @@
         crossorigin="anonymous"
       ></script>
 
+      <!-- card div block for rendering each indivual donor details -->
       <div class="container mt-5 mb-5">
         <div class="card-columns row" id="data"></div>
         <nav>
