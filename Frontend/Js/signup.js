@@ -36,6 +36,7 @@ export const checkStatus = async (response) => {
     output.innerHTML = "Enter all details";
   } else {
     output.innerHTML = result;
+    setTimeout(() => window.location.reload(), 1200);
     SendMail();
   }
 };
