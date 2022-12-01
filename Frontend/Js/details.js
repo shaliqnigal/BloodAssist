@@ -175,12 +175,7 @@ function filterall(grp, city, state) {
 }
 applyId?.addEventListener("click", (e) => {
   e.preventDefault();
-  if (
-    filterblood.value &&
-    filtercity.value &&
-    filterblood.valuee &&
-    filterblood.value
-  ) {
+  if (filterstate.value && filterblood.value) {
     filterstateandgrp(filterstate.value, filterblood.value);
   } else if (filterstate.value && filtercity.value) {
     filterStateAndCity(filtercity.value, filterstate.value);

@@ -23,7 +23,7 @@ function parseJwt(token) {
   return JSON.parse(jsonPayload);
 }
 
-// Function created to validate the Phone Number 
+// Function created to validate the Phone Number
 function validatePhoneNumber(inputtxt) {
   var phoneno = /^\d{10}$/;
   return inputtxt.match(phoneno);
@@ -60,24 +60,27 @@ export const onSubmitRegister = async function (e, editData) {
   e.preventDefault();
   const edit = new FormData(editData).entries();
   // TODO: update API with production path operation
-  const res = await fetch(url, {
-    method: "PUT",
-    headers: {
-      "Content-Type": "application/json",
-      Authorization: cookie,
-    },
-    body: JSON.stringify(Object.fromEntries(edit)),
-  });
-  checkStatus(res);
+  const out = document.getElementById("editresult");
+  if (!validatePhoneNumber(contactNumber.value)) {
+    out.innerHTML = "Enter valid conatct number";
+  } else {
+    const res = await fetch(url, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: cookie,
+      },
+      body: JSON.stringify(Object.fromEntries(edit)),
+    });
+    checkStatus(res);
+  }
 };
 
 // Function to validate the status of the page and return the respective status code.
 export const checkStatus = async (res) => {
   const out = document.getElementById("editresult");
   //   const result = await res.json();
-  if (!validatePhoneNumber(contactNumber.value)) {
-    out.innerHTML = "Enter valid conatct number";
-  } else if (res.status == 422) {
+  if (res.status == 422) {
     out.innerHTML = "please enter valid details";
   } else if (res.status == 404) {
     out.innerHTML = "You are not yet registered";
@@ -90,7 +93,7 @@ export const checkStatus = async (res) => {
     window.location.replace("/Frontend/index.html");
   } else {
     out.innerHTML = "Changes are saved";
-    setTimeout(() => window.location.reload(), 2800);
+    setTimeout(() => window.location.reload(), 1200);
   }
 };
 

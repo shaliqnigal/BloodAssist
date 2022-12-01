@@ -16,17 +16,27 @@ export const signUpListner = function () {
   }
 };
 
+function validatepassword(pass) {
+  return pass.length >= 6;
+}
 // function on submit of the signup form
 export const onSubmit = async function (e, sign) {
   e.preventDefault();
   const userData = new FormData(sign).entries();
   // TODO: update API with production path operation
-  const response = await fetch("http://127.0.0.1:8000/signup", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(Object.fromEntries(userData)),
-  });
-  checkStatus(response);
+  const output = document.getElementById("result");
+  const password = document.getElementById("password");
+
+  if (!validatepassword(password.value)) {
+    output.innerHTML = "password must be atleast 6 characters";
+  } else {
+    const response = await fetch("http://127.0.0.1:8000/signup", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(Object.fromEntries(userData)),
+    });
+    checkStatus(response);
+  }
 };
 
 // checks the status of the API call
@@ -41,8 +51,8 @@ export const checkStatus = async (response) => {
     output.innerHTML = "Enter all details";
   } else {
     output.innerHTML = result;
-    setTimeout(() => window.location.reload(), 1200);
     SendMail();
+    setTimeout(() => window.location.reload(), 1200);
   }
 };
 
