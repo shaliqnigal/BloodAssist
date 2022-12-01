@@ -27,7 +27,7 @@ export const onSubmit = async function (e, sign) {
   const output = document.getElementById("result");
   const password = document.getElementById("password");
 
-  if (!validatepassword(password.value)) {
+  if (!validatepassword(password?.value)) {
     output.innerHTML = "password must be atleast 6 characters";
   } else {
     const response = await fetch("http://127.0.0.1:8000/signup", {
