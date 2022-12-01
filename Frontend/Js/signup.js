@@ -6,6 +6,7 @@ function SendMail() {
   };
   emailjs.send("service_0p65cy8", "template_1g27wlj", params);
 }
+const password = document.getElementById("password");
 // listerner on the signup form and submit the form
 export const signUpListner = function () {
   let signupData = document.getElementById("userDetails");
@@ -17,7 +18,7 @@ export const signUpListner = function () {
 };
 
 function validatepassword(pass) {
-  return pass.length >= 6;
+  return pass?.length >= 6;
 }
 // function on submit of the signup form
 export const onSubmit = async function (e, sign) {
@@ -25,7 +26,6 @@ export const onSubmit = async function (e, sign) {
   const userData = new FormData(sign).entries();
   // TODO: update API with production path operation
   const output = document.getElementById("result");
-  const password = document.getElementById("password");
 
   if (!validatepassword(password?.value)) {
     output.innerHTML = "password must be atleast 6 characters";
