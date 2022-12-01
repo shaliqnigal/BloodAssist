@@ -1,5 +1,6 @@
-const cookie = document.cookie;
+const cookie = document.cookie; // fetches the cookie from browser
 const unregisterBtn = document.getElementById("unregisteryes");
+// decode the cookie
 function parseJwt(token) {
   var base64Url = token.split(".")[1];
   var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
@@ -16,10 +17,12 @@ function parseJwt(token) {
   return JSON.parse(jsonPayload);
 }
 var decode = parseJwt(cookie);
-const owner_id = decode.user_id;
+const owner_id = decode.user_id; // gets the owner id from the decoded JWT
 
+// url for the delete method to unregister the donor
 const url = `http://127.0.0.1:8000/deletedonor/${owner_id}`;
 
+// deletes the donor
 const onYes = async function (e) {
   e.preventDefault();
   const response = await fetch(url, {
@@ -32,8 +35,9 @@ const onYes = async function (e) {
   checkUnregister(response);
 };
 
-unregisterBtn.addEventListener("click", (e) => onYes(e));
+unregisterBtn.addEventListener("click", (e) => onYes(e)); // on clicking the yes to alert it runs onYEs function
 
+// checks the status
 const checkUnregister = async function (response) {
   const output = document.getElementById("unregisterstatus");
   if (response.status == 200) {

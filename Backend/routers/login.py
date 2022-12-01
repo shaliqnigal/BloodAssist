@@ -6,10 +6,10 @@ from database.crud import loginCRUD
 from database import oauth, hashing
 router = APIRouter(tags=['Authentication'])
 
-@router.post("/login")
+@router.post("/login") # path operation for login 
 async def Login(user_credentials: schemas.UserLogin ,session: Session = Depends(dataBase)):
     user = loginCRUD.user_login(user_credentials,session)
     if not user or not hashing.verify(user_credentials.password,user.password):
         raise HTTPException(status_code= status.HTTP_403_FORBIDDEN,detail=f"Invalid credentials")
-    access_token  =oauth.create_access_token(data={"user_id":user.id,"user_email":user.email})
+    access_token  =oauth.create_access_token(data={"user_id":user.id,"user_email":user.email}) # creates the access token on successfull details submission
     return {f"Bearer {access_token}"}

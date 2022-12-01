@@ -5,20 +5,22 @@ let details = [];
 const applyId = document.getElementById("applyId");
 const filterblood = document.getElementById("filterValue");
 const filterstate = document.getElementById("filterstate");
-const filtercity = document.getElementById("cityfilter")
+const filtercity = document.getElementById("cityfilter");
 export async function getData() {
   try {
-    const response = await fetch("http://127.0.0.1:8000/alldonors");
+    const response = await fetch("http://127.0.0.1:8000/alldonors"); // fetching list of donors
     details = await response.json();
     detailsData = details;
-    detailsData?.sort((a, b) => b.created_at.localeCompare(a.created_at));
+    detailsData?.sort((a, b) => b.created_at.localeCompare(a.created_at)); // sorting the lsit of details based on timestamp user is registered
   } catch (err) {}
 }
 
+//Function to render each card and pass it to HTML
 export function cards() {
   var carddetail = "";
   detailsData
     .filter((row, index) => {
+      // logic that sets the limit of 6 cards to be present in the page
       let start = (currentpage - 1) * pagelimit;
       let end = currentpage * pagelimit;
       if (index >= start && index < end) return true;
@@ -45,6 +47,7 @@ export function cards() {
   document.getElementById("data").innerHTML = carddetail;
 }
 
+// changing the timestamp to readable
 export const toDate = function (timestamp) {
   let date = new Date(timestamp);
   let formattedDate = `${
@@ -53,16 +56,17 @@ export const toDate = function (timestamp) {
   return formattedDate;
 };
 
+//rendering all the cards data
 export const renderCard = async function (page = 1) {
   await getData();
   if (page == 1) {
-    previous.style.visibility = "hidden";
+    previous.style.visibility = "hidden"; // on page 1 hide previous btn
   } else {
     previous.style.visibility = "visible";
   }
 
   if (page == numPages()) {
-    nextb.style.visibility = "hidden";
+    nextb.style.visibility = "hidden"; // on last page hide next btn
   } else {
     nextb.style.visibility = "visible";
   }
@@ -70,6 +74,7 @@ export const renderCard = async function (page = 1) {
   cards();
 };
 
+//function to go to previous page
 export function previousPage() {
   if (currentpage > 1) {
     currentpage--;
@@ -77,6 +82,7 @@ export function previousPage() {
   }
 }
 
+// function to go to next page
 export function nextPage() {
   if (currentpage * pagelimit < detailsData.length) {
     currentpage++;
@@ -98,6 +104,7 @@ previous?.addEventListener("click", previousPage, false);
 
 renderCard();
 
+// function to filter based on bloodgroup
 function filterbloodgroup(grp) {
   detailsData = details;
   detailsData?.sort((a, b) => b.created_at.localeCompare(a.created_at));
@@ -106,6 +113,7 @@ function filterbloodgroup(grp) {
   cards();
 }
 
+// function to filter based on city
 function filterByCity(city) {
   detailsData = details;
   detailsData?.sort((a, b) => b.created_at.localeCompare(a.created_at));
@@ -114,6 +122,7 @@ function filterByCity(city) {
   cards();
 }
 
+// fucntion to filter based on state
 function filterstatefn(st) {
   detailsData = details;
   detailsData?.sort((a, b) => b.created_at.localeCompare(a.created_at));
@@ -122,6 +131,7 @@ function filterstatefn(st) {
   cards();
 }
 
+//function to filter based on state and bloodgroup
 function filterstateandgrp(st, grp) {
   detailsData = details;
   detailsData?.sort((a, b) => b.created_at.localeCompare(a.created_at));
@@ -132,49 +142,55 @@ function filterstateandgrp(st, grp) {
   cards();
 }
 
-function filterBldgrpAndCity(city , grp){
+//fucntion to filter based on bloodgroup and city
+function filterBldgrpAndCity(city, grp) {
   detailsData = details;
   detailsData?.sort((a, b) => b.created_at.localeCompare(a.created_at));
   const filterdata = detailsData.filter(
-    (det) => det.city == city  && det.bloodgroup == grp
+    (det) => det.city == city && det.bloodgroup == grp
   );
   detailsData = filterdata;
   cards();
 }
 
-function filterStateAndCity(city , state){
+// function to filter based on state and city
+function filterStateAndCity(city, state) {
   detailsData = details;
   detailsData?.sort((a, b) => b.created_at.localeCompare(a.created_at));
   const filterdata = detailsData.filter(
-    (det) => det.city == city  && det.state == state
+    (det) => det.city == city && det.state == state
   );
   detailsData = filterdata;
   cards();
 }
-
-function filterall(grp, city, state ){
+// filter based on all details
+function filterall(grp, city, state) {
   detailsData = details;
   detailsData?.sort((a, b) => b.created_at.localeCompare(a.created_at));
   const filterdata = detailsData.filter(
-    (det) => det.city == city  && det.state == state && det.bloodgroup == grp
+    (det) => det.city == city && det.state == state && det.bloodgroup == grp
   );
   detailsData = filterdata;
   cards();
-
 }
 applyId?.addEventListener("click", (e) => {
   e.preventDefault();
-  if (filterblood.value && filtercity.value && filterblood.valuee && filterblood.value) {
+  if (
+    filterblood.value &&
+    filtercity.value &&
+    filterblood.valuee &&
+    filterblood.value
+  ) {
     filterstateandgrp(filterstate.value, filterblood.value);
-  } else if (filterstate.value && filtercity.value){
-    filterStateAndCity(filtercity.value, filterstate.value)
+  } else if (filterstate.value && filtercity.value) {
+    filterStateAndCity(filtercity.value, filterstate.value);
   } else if (filterblood.value && filtercity.value) {
-    filterBldgrpAndCity(filtercity.value, filterblood.value );
+    filterBldgrpAndCity(filtercity.value, filterblood.value);
   } else if (filterblood.value && filtercity.value && filterstate.value) {
-    filterall(filterblood.value,filtercity.value,filterstate.value)
+    filterall(filterblood.value, filtercity.value, filterstate.value);
   } else if (filterblood.value) {
     filterbloodgroup(filterblood.value);
-  } else if (filtercity.value){
+  } else if (filtercity.value) {
     filterByCity(filtercity.value);
   } else {
     filterstatefn(filterstate.value);

@@ -12,6 +12,7 @@ app = FastAPI()
 models.Base.metadata.create_all(bind=engine) #creates the tables from models.py
 
 #TOD0: update origins with fornend hosted address in production.
+# origin where frontend broswer is running, to comminucate with it we have open CORS.
 origins = ["*"]
 app.add_middleware(
     CORSMiddleware,
@@ -21,6 +22,7 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
+# including all the routers
 app.include_router(routers.signup.router)
 app.include_router(routers.donor.router)
 app.include_router(routers.login.router)

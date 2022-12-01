@@ -1,12 +1,15 @@
-export const cookie = document.cookie;
+export const cookie = document.cookie; // fetches the cookie to pass as the authorization header in request headers
 const registerData = document.getElementById("registerDetails");
 const registerid = document.getElementById("register");
 const cn = document.getElementById("contact_number");
 
+// fucntion to validate phone number
 function validatePhoneNumber(inputtxt) {
   var phoneno = /^\d{10}$/;
   return inputtxt.match(phoneno);
 }
+
+// listener on the register form
 export const registerListner = function () {
   if (registerData) {
     registerid.addEventListener("click", (e) =>
@@ -15,6 +18,7 @@ export const registerListner = function () {
   }
 };
 
+//
 export const onSubmitRegister = async function (e, registerData) {
   e.preventDefault();
   const register = new FormData(registerData).entries();

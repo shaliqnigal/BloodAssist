@@ -1,15 +1,14 @@
 from database import schemas, models
 from sqlalchemy.orm import Session
 from database import hashing,oauth
-from database.connection import engine
 from fastapi import Depends
 from database.dependency import dataBase
 
 class userCRUD(): # crud operation for signup path operation 
     def user_create(user:schemas.UserCreate, session: Session = Depends(dataBase)): # function for creatimg user and saving it in database
-        hashedPassword = hashing.hash(user.password) 
-        user.password = hashedPassword
-        new_user = models.User(**user.dict())
+        hashedPassword = hashing.hash(user.password) # hash the password before saving the data
+        user.password = hashedPassword 
+        new_user = models.User(**user.dict()) 
         session.add(new_user)
         session.commit()
         session.refresh(new_user)
@@ -45,9 +44,9 @@ class donorCRUD(): #Dono crud operations
         session.commit()
         session.refresh(new_donor)
 
-class detailsCRUD():
-    def getAllDonors(session: Session = Depends(dataBase)):
+class detailsCRUD(): # crud operations for details router 
+    def getAllDonors(session: Session = Depends(dataBase)): # returns all the list of donors    
         return session.query(models.Donor).all()
     
-    def inidvualDonor(id:int,session: Session = Depends(dataBase)):
+    def inidvualDonor(id:int,session: Session = Depends(dataBase)): # returns donor based on id
         return session.query(models.Donor).filter(models.Donor.owner_id == id)

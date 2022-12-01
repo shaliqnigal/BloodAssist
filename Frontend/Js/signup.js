@@ -1,3 +1,4 @@
+// fucntion to send mail on successfull registration
 function SendMail() {
   var params = {
     from_name: document.getElementById("firstname")?.value,
@@ -5,6 +6,7 @@ function SendMail() {
   };
   emailjs.send("service_0p65cy8", "template_1g27wlj", params);
 }
+// listerner on the signup form and submit the form
 export const signUpListner = function () {
   let signupData = document.getElementById("userDetails");
   if (signupData) {
@@ -13,6 +15,8 @@ export const signUpListner = function () {
     return;
   }
 };
+
+// function on submit of the signup form
 export const onSubmit = async function (e, sign) {
   e.preventDefault();
   const userData = new FormData(sign).entries();
@@ -25,6 +29,7 @@ export const onSubmit = async function (e, sign) {
   checkStatus(response);
 };
 
+// checks the status of the API call
 export const checkStatus = async (response) => {
   const output = document.getElementById("result");
   const result = await response.json();

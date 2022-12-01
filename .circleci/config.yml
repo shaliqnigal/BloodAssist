@@ -3,37 +3,37 @@ orbs:
   python: circleci/python@2.0.3
   node : circleci/node@5.0.2
 jobs:
-  Tests_for_backend:
-    docker:
+  Tests_for_backend: # job for running the backend tests
+    docker: # using the python docker image
       - image: cimg/python:3.9.6
     steps:
-      - checkout
+      - checkout # checking out to master branch
       - run:
           name: install virtualenv
-          command: pip install virtualenv
+          command: pip install virtualenv #installing python virtual environment
       - run:
           name : setup virtualenv
-          command: virtualenv .venv
+          command: virtualenv .venv # seting up the venv
       - run:
           name: sourcing virtualenv
-          command: source .venv/bin/activate
+          command: source .venv/bin/activate # activating the venv
 
       - python/install-packages:
-          pkg-manager: pip
+          pkg-manager: pip # installung the dependcies 
 
       - run:
           name: Run tests for Backend
-          command: pytest
+          command: pytest # command to run testcases
 
-  Tests_for_frontend:
+  Tests_for_frontend: # job for running front end cases
     executor: node/default
     steps:
-      - checkout
+      - checkout # checking out to master branch 
       - node/install-packages:
-          pkg-manager: npm 
+          pkg-manager: npm # installing the dependecies
       - run:
           name: Run tests for Frontend
-          command: npm test
+          command: npm test # running the testcases
 workflows:
   test:
     jobs:
@@ -41,9 +41,9 @@ workflows:
           filters:
             branches:
               only:
-                - master
+                - master # run the circle ci only if the commit on master branch
       - Tests_for_frontend:
           filters:
             branches:
               only:
-                - master
+                - master #run the circle ci only if the commit on master branch

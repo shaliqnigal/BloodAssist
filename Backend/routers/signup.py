@@ -7,12 +7,12 @@ from database.dependency import dataBase
 
 router = APIRouter()
 
-@router.post("/signup")
+@router.post("/signup") # path operation for signup and save the user data in database
 async def create_user(userDetails :schemas.UserCreate, session: Session = Depends(dataBase)):
     if userDetails.email == "" or userDetails.firstname == "" or userDetails.lastname == "" or userDetails.password == "":
         raise HTTPException(status_code = 400, detail = f"Enter all details")
     if userCRUD.search_user_email(userDetails.email, session):
         raise HTTPException(status_code=status.HTTP_409_CONFLICT,detail=f"User with {userDetails.email} already exists")
     else:
-        userCRUD.user_create(userDetails, session)
+        userCRUD.user_create(userDetails, session) # saves the data in database
     return {"User registered Successfully"}

@@ -6,7 +6,7 @@ from database.dependency import dataBase
 
 router = APIRouter()
 
-@router.post("/feedback")
+@router.post("/feedback") # path operaption to save the feedback data
 async def save_feedback(feedbackdetails: schemas.feedback, session: Session = Depends(dataBase)):
     if feedbackdetails.rating == "" or feedbackdetails.comments == "" or feedbackdetails.email == "" or feedbackdetails.name =="":
         raise HTTPException(status_code = 400) 

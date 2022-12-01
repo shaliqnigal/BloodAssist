@@ -7,14 +7,14 @@ from database.crud import donorCRUD
 router = APIRouter()
 @router.post('/register_donor') # path operator for registering donor
 async def create_donor(donor:schemas.Donor,session: Session = Depends(dataBase), current_user :  int  = Depends(oauth.get_current_user), current_user_email= Depends(oauth.get_current_user_email) ):
-    if donor.firstname == "" or donor.lastname == "" or donor.city == "" or donor.bloodgroup == "" or donor.contact_number == "" or donor.email == "" or donor.state == "":
+    if donor.firstname == "" or donor.lastname == "" or donor.city == "" or donor.bloodgroup == "" or donor.contact_number == "" or donor.email == "" or donor.state == "": # if user tries to submit empty form it results to expection
         raise HTTPException(status_code = 400, detail = f"enter all details")
 
     search_id = session.query(models.Donor).filter(models.Donor.owner_id == current_user ).first()
     
-    if current_user_email != donor.email:
+    if current_user_email != donor.email: # user not using the same email he logged in with
         raise HTTPException(status_code=403 , detail=f" Use same email you are logged in with")
-    if search_id:
+    if search_id: # if user tries to register again
         raise HTTPException(status_code=status.HTTP_409_CONFLICT,detail=f"Your are already registered")
     else:
         donorCRUD.createDonor(id,donor,session,current_user)
@@ -24,11 +24,11 @@ async def create_donor(donor:schemas.Donor,session: Session = Depends(dataBase),
 async def edit_donor(id:int,update_donor:schemas.Donor,session: Session = Depends(dataBase), current_user :  int  = Depends(oauth.get_current_user), current_user_email= Depends(oauth.get_current_user_email)):
     query = donorCRUD.findDonorWithid(id,session)
     donor = query.first()
-    if donor == None:
+    if donor == None: # if user tries to edit without registering
         raise HTTPException(status_code = 404, detail = f"You are not yet registered")
-    if current_user_email != update_donor.email:
+    if current_user_email != update_donor.email: 
         raise HTTPException(status_code = 400, detail = f"Use same email you are logged in with")
-    if (donor.owner_id) != int(current_user):
+    if (donor.owner_id) != int(current_user): # if user is tries to change others details
         raise HTTPException(status_code= 403,detail=f"Not authorized to perform requested action")
     donorCRUD.updateDonor(id,update_donor,session)
     return donor
