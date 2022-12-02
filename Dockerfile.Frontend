@@ -1,2 +1,4 @@
-FROM nginx
-COPY ./Frontend /usr/share/nginx/html/Frontend
+# using nginx as base image
+FROM nginx 
+#copying the frontend folder to nginx html pages
+COPY ./Frontend /usr/share/nginx/html/Frontend 
